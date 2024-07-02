@@ -1,0 +1,259 @@
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+.PioEntryPage {
+    width: 1440px;
+    height: 1177px;
+    position: relative;
+    background: white;
+}
+
+.Rectangle2 {
+    width: 228px;
+    height: 1087px;
+    left: 0px;
+    top: 90px;
+    position: absolute;
+    background: #1E5DA9;
+}
+
+.Frame31 {
+    height: 920px;
+    left: 265px;
+    top: 174px;
+    position: absolute;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    display: inline-flex;
+}
+
+.Frame28 {
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+}
+
+.Entry {
+    color: black;
+    font-size: 40px;
+    font-family: Raleway;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.Frame30 {
+    align-self: stretch;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 168px;
+    display: inline-flex;
+}
+
+.Frame16, .Frame15, .Frame17, .Frame18, .Frame19, .Frame20, .Frame21, .Frame22 {
+    width: 482px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+}
+
+.Frame14, .Frame15, .Frame16, .Frame17, .Frame18, .Frame19, .Frame20, .Frame21, .Frame22 {
+    align-self: stretch;
+    height: 77px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+.Frame4 {
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+}
+
+.IdKantor, .NamaKantor, .JenisKantor, .PsoNonPso, .KcuKc, .NomorNde, .TanggalNde, .Perihal, .PejabatPengirimNde, .Regional, .JenisPengajuan, .BiayaYangDiajukan, .MasaSewa, .Tmt, .Sd, .Kinerja2021, .Kinerja2022, .Kinerja2023 {
+    color: black;
+    font-size: 20px;
+    font-family: Raleway;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Frame3 {
+    align-self: stretch;
+    height: 54px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    display: flex;
+}
+
+.Frame2 {
+    height: 54px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    display: flex;
+}
+
+.Rectangle4 {
+    width: 458px;
+    height: 34px;
+    background: white;
+    border-radius: 100px;
+    border: 1px black solid;
+    padding: 0 15px;
+}
+
+.Frame29 {
+    width: 482px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 27px;
+    display: inline-flex;
+}
+
+.Frame23 {
+    align-self: flex-end;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #F99B3B;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    margin-top: 20px;
+}
+
+.Submit {
+    color: white;
+    font-size: 28px;
+    font-family: Raleway;
+    font-weight: 700;
+    word-wrap: break-word;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.Frame27 {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    left: 10px;
+    top: 125px;
+    position: absolute;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+}
+
+.PerpanjanganIzinOperasi {
+    color: white;
+    font-size: 15px;
+    font-family: Raleway;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.Frame26.top-menu {
+    left: 275px;
+    top: 114px;
+    position: absolute;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 46px;
+    display: inline-flex;
+}
+
+.Frame24, .Frame25, .Frame26 {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+}
+
+.Entry, .Update, .Monitoring {
+    color: black;
+    font-size: 20px;
+    font-family: Raleway;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.Frame34 {
+    width: 1440px;
+    height: 90px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #FFD3A6;
+    justify-content: space-between;
+    align-items: center;
+    display: inline-flex;
+}
+
+.Frame33 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    display: inline-flex;
+}
+
+.Image3 {
+    width: 64px;
+    height: 56px;
+}
+
+.Frame32 {
+    padding-right: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    display: flex;
+}
+
+.Image4 {
+    width: 106px;
+    height: 35px;
+}
+
+.Image5 {
+    width: 120px;
+    height: 49px;
+}
+
+.Image6 {
+    width: 110px;
+    height: 27px;
+}
