@@ -13,34 +13,57 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve form data
-$id_kantor = $_POST['id_kantor'];
-$nama_kantor = $_POST['nama_kantor'];
-$jenis_kantor = $_POST['jenis_kantor'];
-$pso_non_pso = $_POST['pso_non_pso'];
-$kcu_kc = $_POST['kcu_kc'];
-$nomor_nde = $_POST['nomor_nde'];
-$tanggal_nde = $_POST['tanggal_nde'];
-$perihal = $_POST['perihal'];
-$pejabat_pengirim_nde = $_POST['pejabat_pengirim_nde'];
-$regional = $_POST['regional'];
-$jenis_pengajuan = $_POST['jenis_pengajuan'];
-$biaya_yang_diajukan = $_POST['biaya_yang_diajukan'];
-$masa_sewa = $_POST['masa_sewa'];
-$tmt = $_POST['tmt'];
-$sd = $_POST['sd'];
-$kinerja_2021 = $_POST['kinerja_2021'];
-$kinerja_2022 = $_POST['kinerja_2022'];
-$kinerja_2023 = $_POST['kinerja_2023'];
+// Function to sanitize input data
+function sanitize($input) {
+    global $conn;
+    return mysqli_real_escape_string($conn, htmlspecialchars(strip_tags($input)));
+}
 
-// Insert data into database
-$sql = "INSERT INTO izin_operasi (id_kantor, nama_kantor, jenis_kantor, pso_non_pso, kcu_kc, nomor_nde, tanggal_nde, perihal, pejabat_pengirim_nde, regional, jenis_pengajuan, biaya_yang_diajukan, masa_sewa, tmt, sd, kinerja_2021, kinerja_2022, kinerja_2023)
-VALUES ('$id_kantor', '$nama_kantor', '$jenis_kantor', '$pso_non_pso', '$kcu_kc', '$nomor_nde', '$tanggal_nde', '$perihal', '$pejabat_pengirim_nde', '$regional', '$jenis_pengajuan', '$biaya_yang_diajukan', '$masa_sewa', '$tmt', '$sd', '$kinerja_2021', '$kinerja_2022', '$kinerja_2023')";
+// Determine which form submitted the data
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['from_update_page'])) {
+        // Data from entry.blade.php form
+        $nomor_nde = sanitize($_POST['nomor_nde']);
+        $tanggal = sanitize($_POST['tanggal']);
+        $perihal = sanitize($_POST['perihal']);
+        $keterangan = sanitize($_POST['keterangan']);
+        $status = sanitize($_POST['status']);
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+        // Insert into update_data table
+        $sql = "INSERT INTO update_data (nomor_nde, tanggal, perihal, keterangan, status)
+                VALUES ('$nomor_nde', '$tanggal', '$perihal', '$keterangan', '$status')";
+    } elseif (isset($_POST['from_entry_page'])) {
+        // Data from update.blade.php form
+        $id_kantor = sanitize($_POST['id_kantor']);
+        $nama_kantor = sanitize($_POST['nama_kantor']);
+        $jenis_kantor = sanitize($_POST['jenis_kantor']);
+        $pso_non_pso = sanitize($_POST['pso_non_pso']);
+        $kcu_kc = sanitize($_POST['kcu_kc']);
+        $nomor_nde = sanitize($_POST['nomor_nde']);
+        $tanggal_nde = sanitize($_POST['tanggal_nde']);
+        $perihal = sanitize($_POST['perihal']);
+        $pejabat_pengirim_nde = sanitize($_POST['pejabat_pengirim_nde']);
+        $regional = sanitize($_POST['regional']);
+        $jenis_pengajuan = sanitize($_POST['jenis_pengajuan']);
+        $biaya_yang_diajukan = sanitize($_POST['biaya_yang_diajukan']);
+        $masa_sewa = sanitize($_POST['masa_sewa']);
+        $tmt = sanitize($_POST['tmt']);
+        $sd = sanitize($_POST['sd']);
+        $kinerja_2021 = sanitize($_POST['kinerja_2021']);
+        $kinerja_2022 = sanitize($_POST['kinerja_2022']);
+        $kinerja_2023 = sanitize($_POST['kinerja_2023']);
+
+        // Insert into izin_operasi table
+        $sql = "INSERT INTO izin_operasi (id_kantor, nama_kantor, jenis_kantor, pso_non_pso, kcu_kc, nomor_nde, tanggal_nde, perihal, pejabat_pengirim_nde, regional, jenis_pengajuan, biaya_yang_diajukan, masa_sewa, tmt, sd, kinerja_2021, kinerja_2022, kinerja_2023)
+                VALUES ('$id_kantor', '$nama_kantor', '$jenis_kantor', '$pso_non_pso', '$kcu_kc', '$nomor_nde', '$tanggal_nde', '$perihal', '$pejabat_pengirim_nde', '$regional', '$jenis_pengajuan', '$biaya_yang_diajukan', '$masa_sewa', '$tmt', '$sd', '$kinerja_2021', '$kinerja_2022', '$kinerja_2023')";
+    }
+
+    // Execute SQL query
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 }
 
 // Close connection

@@ -212,14 +212,14 @@
         <div class="PerpanjanganIzinOperasi">Perpanjangan Izin Operasi</div>
     </div>
     <div class="Frame26 top-menu">
-        <div class="Frame24">
-            <div class="Entry">Entry</div>
+    <div class="Frame24">
+            <a href="{{ route('entry') }}" class="Entry">Entry</a>
         </div>
         <div class="Frame25">
-            <div class="Update">Update</div>
+            <a href="{{ route('update.edit', ['id' => 1]) }}" class="Update">Update</a>
         </div>
         <div class="Frame26">
-            <div class="Monitoring">Monitoring</div>
+            <a href="monitoring" class="Monitoring">Monitoring</a>
         </div>
     </div>
     <div class="Frame34">

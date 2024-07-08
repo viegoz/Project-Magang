@@ -3,7 +3,7 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-.PioEntryPage {
+.UpdatePage {
     width: 1440px;
     height: 1177px;
     position: relative;
@@ -13,9 +13,9 @@ body {
 .Rectangle2 {
     width: 228px;
     height: 1087px;
+    position: absolute;
     left: 0px;
     top: 90px;
-    position: absolute;
     background: #1E5DA9;
 }
 
@@ -207,7 +207,7 @@ body {
 }
 
 .Frame34 {
-    width: 1440px;
+    width: 100%;
     height: 90px;
     left: 0px;
     top: 0px;
@@ -256,4 +256,47 @@ body {
 .Image6 {
     width: 110px;
     height: 27px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+form select, form input {
+    padding: 5px;
+    font-size: 14px;
+}
+
+@media screen {
+    
 }

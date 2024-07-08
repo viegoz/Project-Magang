@@ -30,6 +30,9 @@ class EntryController extends Controller
             'kinerja_2023' => 'required|string|max:255',
         ]);
 
+        // Menambahkan nilai default untuk kolom status
+        $data['status'] = 'Pending';
+
         DB::table('izin_operasi')->insert($data);
 
         return back()->with('success', 'Data has been submitted successfully.');
