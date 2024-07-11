@@ -26,3 +26,7 @@ Route::put('/update/{id}', [DataController::class, 'update'])->name('update.upda
 
 Route::get('/get-perihal-by-nde', [DataController::class, 'getPerihalByNde'])->name('getPerihalByNde');
 Route::get('/get-perihal-by-nde-input', [DataController::class, 'getPerihalByNdeInput'])->name('getPerihalByNdeInput');
+
+Route::get('/getKantorData', [EntryController::class, 'getKantorData'])->name('getKantorData');
+
+Route::get('/kantor-list', [EntryController::class, 'getKantorList'])->name('getKantorList');

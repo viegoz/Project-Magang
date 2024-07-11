@@ -7,8 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class EntryController extends Controller
 {
+    public function getKantorList()
+    {
+    $kantorList = DB::table('referensi')->select('nama_kantor')->get();
+    return response()->json($kantorList);
+    }
+
     public function submit(Request $request)
     {
+
         $data = $request->validate([
             'id_kantor' => 'required|string|max:255',
             'nama_kantor' => 'required|string|max:255',
@@ -28,7 +35,25 @@ class EntryController extends Controller
             'kinerja_2021' => 'required|string|max:255',
             'kinerja_2022' => 'required|string|max:255',
             'kinerja_2023' => 'required|string|max:255',
+            'tanggal_submit_surat' => 'required|date',
         ]);
+
+        // Fungsi untuk menghitung total kinerja
+        function calculateTotalKinerja($kinerja)
+        {
+            list($kurlog, $payment, $ritel) = array_map('intval', explode(',', $kinerja));
+
+            $kurlog = ($kurlog * 20) / 100;
+            $payment = ($payment * 60) / 100;
+            $ritel = ($ritel * 20) / 100;
+
+            return $kurlog + $payment + $ritel;
+        }
+
+        // Menghitung total kinerja untuk setiap tahun
+        $data['kinerja_2021'] = calculateTotalKinerja($data['kinerja_2021']);
+        $data['kinerja_2022'] = calculateTotalKinerja($data['kinerja_2022']);
+        $data['kinerja_2023'] = calculateTotalKinerja($data['kinerja_2023']);
 
         // Menambahkan nilai default untuk kolom status
         $data['status'] = 'Pending';
@@ -37,4 +62,19 @@ class EntryController extends Controller
 
         return back()->with('success', 'Data has been submitted successfully.');
     }
+
+    public function getKantorData(Request $request)
+{
+    $namaKantor = $request->input('nama_kantor');
+    $kantorData = DB::table('referensi')
+        ->select('id_kantor', 'jenis_kantor', 'pso_non_pso', 'regional', 'kcu', 'kc')
+        ->where('nama_kantor', $namaKantor)
+        ->first();
+
+    if ($kantorData) {
+        return response()->json($kantorData);
+    } else {
+        return response()->json(['message' => 'Data not found'], 404);
+    }
+}
 }

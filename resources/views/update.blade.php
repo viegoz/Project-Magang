@@ -9,6 +9,16 @@
 </head>
 <body>
 <div class="UpdatePage">
+    @if(session('success'))
+        <div class="alert alert-success" style="display: none;">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger" style="display: none;">
+            {{ session('error') }}
+        </div>
+    @endif
     <form action="{{ route('update.update', $data->id ?? '') }}" method="post" id="updateForm">
         @csrf
         @method('PUT')
@@ -79,6 +89,17 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Nomor NDE Balasan Field -->
+                    <div class="Frame17">
+                        <div class="Frame4">
+                            <div class="NomorNdeBalasan">Nomor NDE Balasan</div>
+                        </div>
+                        <div class="Frame3">
+                            <div class="Frame2">
+                                <input type="text" class="Rectangle4" id="nomorNdeBalasan" readonly>
+                            </div>
+                        </div>
+                    </div>
                     <div class="Frame23">
                         <button class="Submit" type="submit">UPDATE</button>
                     </div>
@@ -122,14 +143,39 @@ $(document).ready(function() {
                 data: { id: selectedId },
                 success: function(response) {
                     $('#perihalField').val(response.perihal);
+                    $('#nomorNdeBalasan').val(response.nomor_nde + ' - ' + response.tanggal_submit_surat + ' - ' + response.perihal);
                     $('#updateForm').attr('action', '{{ url("update") }}/' + selectedId);
                 }
             });
         } else {
             $('#perihalField').val('');
+            $('#nomorNdeBalasan').val('');
             $('#updateForm').attr('action', '{{ route("update.update", "") }}');
         }
     });
+
+    // Validasi sebelum submit form
+    $('#updateForm').submit(function(event) {
+        let valid = true;
+        $('.Rectangle4').each(function() {
+            if ($(this).val() === '') {
+                valid = false;
+                $(this).css('border-color', 'red');
+            } else {
+                $(this).css('border-color', '');
+            }
+        });
+
+        if (!valid) {
+            event.preventDefault();
+            alert('Field Kosong');
+        }
+    });
+
+    // Tampilkan dialog sukses jika ada pesan sukses
+    if ($('.alert-success').length) {
+        alert($('.alert-success').text());
+    }
 });
 </script>
 </body>
