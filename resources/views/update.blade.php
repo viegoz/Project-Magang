@@ -168,7 +168,7 @@ $(document).ready(function() {
 
         if (!valid) {
             event.preventDefault();
-            alert('Field Kosong');
+            alert('Isilah semua field');
         }
     });
 

@@ -8,9 +8,10 @@ use Carbon\Carbon;
 
 class DataController extends Controller
 {
-    public function edit($id)
+    public function edit()
     {
-        $data = DataModel::find($id);
+        // Ambil semua data, atau Anda bisa mengubah logika ini sesuai kebutuhan
+        $data = DataModel::first();
         $allData = DataModel::all();
         if (!$data) {
             return redirect()->route('entry')->with('error', 'Data tidak ditemukan');

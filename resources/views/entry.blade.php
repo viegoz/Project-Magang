@@ -222,7 +222,7 @@
             <a href="{{ route('entry') }}" class="Entry">Entry</a>
         </div>
         <div class="Frame25">
-            <a href="{{ route('update.edit', ['id' => 1]) }}" class="Update">Update</a>
+            <a href="{{ route('update.edit') }}" class="Update">Update</a>
         </div>
         <div class="Frame26">
             <a href="monitoring" class="Monitoring">Monitoring</a>
